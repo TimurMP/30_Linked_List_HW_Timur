@@ -1,4 +1,4 @@
-package telran.list.interfaces;
+package list.interfaces;
 
 public interface IList<E> extends Iterable<E> {
     boolean add (E element);

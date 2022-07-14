@@ -1,14 +1,15 @@
-package telran.list.tests;
+package list.tests;
 
+import list.interfaces.IList;
+import list.model.MyLinkedList;
 import org.junit.jupiter.api.Test;
-import telran.list.interfaces.IList;
-import telran.list.model.MyArrayList;
+
 
 class ListTest {
 
     @Test
     void test() {
-        IList<Integer> list = new MyArrayList<>();
+        IList<Integer> list = new MyLinkedList<>();
 
         System.out.println("Size: "+ list.size());
         list.add(2);
@@ -17,10 +18,17 @@ class ListTest {
         list.add(5);
         list.add(null);
         list.add(7);
-//        System.out.println(list.size());
-//        System.out.println(list.get(1));
+        System.out.println("Size: "+ list.size());
+
+
+//
+//
+        System.out.println(list.get(0));
+//        System.out.println(list.get(4));
 //        System.out.println("---------");
 //        System.out.println(list.indexOf(7));
+//        System.out.println(list.indexOf(null));
+//
 //        System.out.println(list.lastIndexOf(7));
 //        System.out.println(list.contains(11));
 //        System.out.println(list.isEmpty());
@@ -31,30 +39,30 @@ class ListTest {
 //        list.set(4, 11);
 //        System.out.println(list.get(4));
 
-
-        System.out.println("Size after adding elements: "+ list.size());
-
+//
+//        System.out.println("Size after adding elements: "+ list.size());
+//
         System.out.println("Iterator:");
         for (Integer element : list) {
             System.out.println(element);
 
         }
-        System.out.println("=============");
-        System.out.println();
-
-        System.out.println("Size before add(int index, E element): "+ list.size());
-        list.add(6, 2555);
-        list.add(5, null);
-        System.out.println("Size after add(int index, E element): "+ list.size());
-        list.add(7, 1555);
-
-        System.out.println("Iterator:  after add(int index, E element):");
-        for (Integer element : list) {
-            System.out.println(element);
-
-        }
-        System.out.println("=============");
-        System.out.println();
+//        System.out.println("=============");
+//        System.out.println();
+//
+//        System.out.println("Size before add(int index, E element): "+ list.size());
+//        list.add(6, 2555);
+//        list.add(5, null);
+//        System.out.println("Size after add(int index, E element): "+ list.size());
+//        list.add(7, 1555);
+//
+//        System.out.println("Iterator:  after add(int index, E element):");
+//        for (Integer element : list) {
+//            System.out.println(element);
+//
+//        }
+//        System.out.println("=============");
+//        System.out.println();
 
 //        System.out.println("Size before clear "+ list.size());
 //        list.clear();
