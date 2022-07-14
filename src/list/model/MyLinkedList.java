@@ -26,7 +26,27 @@ public class MyLinkedList<E> implements IList<E> {
 
     @Override
     public void clear() {
-        // TODO Auto-generated method stub
+
+        for (int i = 0; i < size; i++) {
+            Node<E> node = getNodeByIndex(0);
+
+            Node<E> prev = node.prev;
+            Node<E> next = node.next;
+            if (prev != null) {
+                prev.next = next;
+                node.prev = null;
+            } else {
+                first = next;
+            }
+            if (next != null) {
+                next.prev = prev;
+                node.next = null;
+            } else {
+                last = prev;
+            }
+            node.data = null;
+        }
+        size = 0;
 
     }
 

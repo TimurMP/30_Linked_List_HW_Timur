@@ -64,21 +64,21 @@ class ListTest {
 //        System.out.println("=============");
 //        System.out.println();
 
-//        System.out.println("Size before clear "+ list.size());
-//        list.clear();
-//        System.out.println("Size after clear "+ list.size());
-//
-//
-//        list.add(555);
-//        list.add(666);
-//        list.add(777);
-//        list.add(888);
-//        System.out.println("New elements after clear: "+ list.size());
-//
-//        for (Integer element : list) {
-//            System.out.println(element);
-//
-//        }
+        System.out.println("Size before clear "+ list.size());
+        list.clear();
+        System.out.println("Size after clear "+ list.size());
+
+
+        list.add(555);
+        list.add(666);
+        list.add(777);
+        list.add(888);
+        System.out.println("New elements after clear: "+ list.size());
+
+        for (Integer element : list) {
+            System.out.println(element);
+
+        }
 
     }
 
