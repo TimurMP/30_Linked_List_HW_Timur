@@ -28,6 +28,7 @@ public class MyLinkedList<E> implements IList<E> {
     @Override
     public boolean add(int index, E element) {
 
+
         Node<E> nodeAfter = getNodeByIndex(index);
         if (nodeAfter == first){
             Node<E> newNode = new Node<E>(null, element, first);
