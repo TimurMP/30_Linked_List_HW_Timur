@@ -13,6 +13,7 @@ public class MyLinkedList<E> implements IList<E> {
 
     @Override
     public boolean add(E element) {
+
         Node<E> newNode = new Node<E>(last, element, null);
         if (last != null) {
             last.next = newNode;
@@ -20,6 +21,35 @@ public class MyLinkedList<E> implements IList<E> {
             first = newNode;
         }
         last = newNode;
+        size++;
+        return true;
+    }
+
+    @Override
+    public boolean add(int index, E element) {
+
+        Node<E> nodeAfter = getNodeByIndex(index);
+        if (nodeAfter == first){
+            Node<E> newNode = new Node<E>(null, element, first);
+            first.prev = newNode;
+            first = newNode;
+            size++;
+            return true;
+        }
+        if (nodeAfter == last){
+            Node<E> newNode = new Node<E>(last, element, null);
+            last.next = newNode;
+            last = newNode;
+            size++;
+            return true;
+        }
+
+
+        Node<E> nodeBefore = getNodeByIndex(index-1);
+
+        Node<E> newNode = new Node<E>(nodeBefore, element, nodeAfter);
+        nodeBefore.next = newNode;
+        nodeAfter.prev = newNode;
         size++;
         return true;
     }
@@ -55,11 +85,7 @@ public class MyLinkedList<E> implements IList<E> {
         return size;
     }
 
-    @Override
-    public boolean add(int index, E element) {
-        // TODO Auto-generated method stub
-        return false;
-    }
+
 
     @Override
     public E get(int index) {

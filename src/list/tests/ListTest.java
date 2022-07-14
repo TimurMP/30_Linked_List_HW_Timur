@@ -50,35 +50,37 @@ class ListTest {
 //        System.out.println("=============");
 //        System.out.println();
 //
-//        System.out.println("Size before add(int index, E element): "+ list.size());
-//        list.add(6, 2555);
-//        list.add(5, null);
-//        System.out.println("Size after add(int index, E element): "+ list.size());
+        System.out.println("Size before add(int index, E element): "+ list.size());
+        list.add(3, 77777);
+        list.add(5, null);
+        list.add(0, 11111);
+        list.add(8, 99999);
+        System.out.println("Size after add(int index, E element): "+ list.size());
 //        list.add(7, 1555);
 //
-//        System.out.println("Iterator:  after add(int index, E element):");
-//        for (Integer element : list) {
-//            System.out.println(element);
-//
-//        }
-//        System.out.println("=============");
-//        System.out.println();
-
-        System.out.println("Size before clear "+ list.size());
-        list.clear();
-        System.out.println("Size after clear "+ list.size());
-
-
-        list.add(555);
-        list.add(666);
-        list.add(777);
-        list.add(888);
-        System.out.println("New elements after clear: "+ list.size());
-
+        System.out.println("Iterator:  after add(int index, E element):");
         for (Integer element : list) {
             System.out.println(element);
 
         }
+//        System.out.println("=============");
+//        System.out.println();
+
+//        System.out.println("Size before clear "+ list.size());
+//        list.clear();
+//        System.out.println("Size after clear "+ list.size());
+//
+//
+//        list.add(555);
+//        list.add(666);
+//        list.add(777);
+//        list.add(888);
+//        System.out.println("New elements after clear: "+ list.size());
+//
+//        for (Integer element : list) {
+//            System.out.println(element);
+//
+//        }
 
     }
 
