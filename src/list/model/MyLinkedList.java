@@ -14,6 +14,7 @@ public class MyLinkedList<E> implements IList<E> {
     @Override
     public boolean add(E element) {
 
+        //O(1)
         Node<E> newNode = new Node<E>(last, element, null);
         if (last != null) {
             last.next = newNode;
@@ -25,36 +26,35 @@ public class MyLinkedList<E> implements IList<E> {
         return true;
     }
 
+    //O(n)
     @Override
     public boolean add(int index, E element) {
-
-
+        checkIndex(index);
         Node<E> nodeAfter = getNodeByIndex(index);
-        if (nodeAfter == first){
-            Node<E> newNode = new Node<E>(null, element, first);
-            first.prev = newNode;
-            first = newNode;
-            size++;
-            return true;
+        if(nodeAfter != first && nodeAfter != last )
+        {
+            Node<E> nodeBefore = getNodeByIndex(index-1);
+            Node<E> newNode = new Node<E>(nodeBefore, element, nodeAfter);
+            nodeBefore.next = newNode;
+            nodeAfter.prev = newNode;
+        }else {
+            if (nodeAfter == first){
+                Node<E> newNode = new Node<E>(null, element, first);
+                first.prev = newNode;
+                first = newNode;
+            }
+            if (nodeAfter == last){
+                Node<E> newNode = new Node<E>(last, element, null);
+                last.next = newNode;
+                last = newNode;
+            }
         }
-        if (nodeAfter == last){
-            Node<E> newNode = new Node<E>(last, element, null);
-            last.next = newNode;
-            last = newNode;
-            size++;
-            return true;
-        }
-
-
-        Node<E> nodeBefore = getNodeByIndex(index-1);
-
-        Node<E> newNode = new Node<E>(nodeBefore, element, nodeAfter);
-        nodeBefore.next = newNode;
-        nodeAfter.prev = newNode;
         size++;
         return true;
+
     }
 
+    //O(n)
     @Override
     public void clear() {
 
@@ -81,6 +81,7 @@ public class MyLinkedList<E> implements IList<E> {
 
     }
 
+    //O(1)
     @Override
     public int size() {
         return size;
@@ -88,12 +89,14 @@ public class MyLinkedList<E> implements IList<E> {
 
 
 
+    //O(n)
     @Override
     public E get(int index) {
         Node<E> node = getNodeByIndex(index);
         return node.data;
     }
 
+    //O(n)
     private Node<E> getNodeByIndex(int index) {
         checkIndex(index);
         Node<E> node = first;
@@ -103,6 +106,7 @@ public class MyLinkedList<E> implements IList<E> {
         return node;
     }
 
+
     private void checkIndex(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException(index);
@@ -110,6 +114,7 @@ public class MyLinkedList<E> implements IList<E> {
 
     }
 
+    //O(n)
     @Override
     public int indexOf(Object o) {
         int index = 0;
@@ -129,6 +134,7 @@ public class MyLinkedList<E> implements IList<E> {
         return -1;
     }
 
+    //O(n)
     @Override
     public int lastIndexOf(Object o) {
         int index = size - 1;
@@ -148,12 +154,14 @@ public class MyLinkedList<E> implements IList<E> {
         return -1;
     }
 
+    //O(n)
     @Override
     public E remove(int index) {
         Node<E> node = getNodeByIndex(index);
         return unlink(node);
     }
 
+    //O(1)
     private E unlink(Node<E> node) {
         E victim = node.data;
         Node<E> prev = node.prev;
@@ -175,6 +183,7 @@ public class MyLinkedList<E> implements IList<E> {
         return victim;
     }
 
+    //O(n)
     @Override
     public E set(int index, E element) {
         Node<E> node = getNodeByIndex(index);
