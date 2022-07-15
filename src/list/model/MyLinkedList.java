@@ -10,7 +10,6 @@ public class MyLinkedList<E> implements IList<E> {
     private int size;
 
 
-
     @Override
     public boolean add(E element) {
 
@@ -31,19 +30,18 @@ public class MyLinkedList<E> implements IList<E> {
     public boolean add(int index, E element) {
         checkIndex(index);
         Node<E> nodeAfter = getNodeByIndex(index);
-        if(nodeAfter != first && nodeAfter != last )
-        {
-            Node<E> nodeBefore = getNodeByIndex(index-1);
+        if (nodeAfter != first && nodeAfter != last) {
+            Node<E> nodeBefore = getNodeByIndex(index - 1);
             Node<E> newNode = new Node<E>(nodeBefore, element, nodeAfter);
             nodeBefore.next = newNode;
             nodeAfter.prev = newNode;
-        }else {
-            if (nodeAfter == first){
+        } else {
+            if (nodeAfter == first) {
                 Node<E> newNode = new Node<E>(null, element, first);
                 first.prev = newNode;
                 first = newNode;
             }
-            if (nodeAfter == last){
+            if (nodeAfter == last) {
                 Node<E> newNode = new Node<E>(last, element, null);
                 last.next = newNode;
                 last = newNode;
@@ -88,7 +86,6 @@ public class MyLinkedList<E> implements IList<E> {
     }
 
 
-
     //O(n)
     @Override
     public E get(int index) {
@@ -99,9 +96,16 @@ public class MyLinkedList<E> implements IList<E> {
     //O(n)
     private Node<E> getNodeByIndex(int index) {
         checkIndex(index);
-        Node<E> node = first;
-        for (int i = 0; i < index; i++) {
-            node = node.next;
+        if (index < size / 2 - 1) {
+            Node<E> node = first;
+            for (int i = 0; i < index; i++) {
+                node = node.next;
+            }
+            return node;
+        }
+        Node<E> node = last;
+        for (int i = size - 1; i > index; i--) {
+            node = node.prev;
         }
         return node;
     }
