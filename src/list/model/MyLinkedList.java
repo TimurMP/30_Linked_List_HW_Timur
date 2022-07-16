@@ -9,7 +9,6 @@ public class MyLinkedList<E> implements IList<E> {
     private Node<E> last;
     private int size;
 
-
     @Override
     public boolean add(E element) {
 
